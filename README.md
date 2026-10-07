@@ -35,7 +35,7 @@ flowchart LR
 | --- | --- | --- |
 | Ingest | `npm run ingest` | Scrapes every Clutch directory page in `searches.txt` and upserts each company: website, location, team size, hourly rate, minimum project size, service mix, rating, reviews and the Clutch summary. |
 | Qualify | `npm run qualify` | Claude scores every company that has no score for the current `icp.md`: 0–100, tier A/B/C, the reason and a one-sentence outreach angle. Skipped if `ANTHROPIC_API_KEY` isn't set. |
-| Contacts | `npm run contacts` | Finds decision makers (CEO, founder, CTO, ...) on LinkedIn for companies scoring `MIN_SCORE` or more, best first, at most `MAX_COMPANIES` per run. A company is never searched twice. |
+| Contacts | `npm run contacts` | Finds decision makers (CEO, founder, CTO, ...) on LinkedIn for companies scoring `MIN_SCORE` or more, best first, at most `MAX_COMPANIES` per run. Companies are looked up by their website, which pins the exact LinkedIn company. A company is never searched twice. |
 | Report | `npm run report` | Writes `reports/leads.csv` with one row per contact and `reports/index.html` with tier A and B companies. |
 
 The AI step runs **before** the paid contact search, so you only pay to find people at companies worth contacting.
@@ -74,6 +74,7 @@ Then make it yours:
 | `MAX_COMPANIES` | `10` | Contact searches per run |
 | `TITLES` | `CEO,Founder,CTO,VP Engineering` | Titles to look for |
 | `PERSONS_PER_COMPANY` | `2` | Decision makers per company |
+| `LOCATION` | `United States` | Only decision makers based here; tells apart companies that share a name. A country or state is safer than a city, since founders often live away from the office Clutch lists |
 
 ## The CSV
 
@@ -82,8 +83,9 @@ Then make it yours:
 contact_linkedin, contact_confidence, clutch_profile`. HubSpot, Pipedrive and most CRMs import it as is.
 
 `contact_confidence` comes from the LinkedIn Actor: it is lower when the person's title doesn't match one of `TITLES`
-or their current company doesn't look like the target. Companies are searched by name, so a small agency can pick up
-people from another company with the same name. Check contacts before reaching out, especially `medium` and `low` ones.
+or their current company doesn't look like the target. Companies are looked up by website, and `LOCATION` keeps out
+people based elsewhere, but a generic name (say, two US firms called "Eureka Software") can still mix. Check contacts
+before reaching out, especially `medium` and `low` ones.
 
 ## Query the leads
 
