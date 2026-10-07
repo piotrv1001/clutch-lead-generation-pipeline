@@ -82,7 +82,8 @@ Then make it yours:
 contact_linkedin, contact_confidence, clutch_profile`. HubSpot, Pipedrive and most CRMs import it as is.
 
 `contact_confidence` comes from the LinkedIn Actor: it is lower when the person's title doesn't match one of `TITLES`
-or their current company doesn't look like the target. Check `medium` and `low` rows by hand before reaching out.
+or their current company doesn't look like the target. Companies are searched by name, so a small agency can pick up
+people from another company with the same name. Check contacts before reaching out, especially `medium` and `low` ones.
 
 ## Query the leads
 
@@ -110,7 +111,8 @@ Pricing as of October 7, 2026:
   [Current pricing](https://apify.com/piotrv1001/clutch-listings-scraper/pricing).
 - **LinkedIn Decision Maker Finder:** $0.025 per decision maker, so $0.50 for 10 companies × 2 people.
   [Current pricing](https://apify.com/piotrv1001/linkedin-decision-maker-finder/pricing).
-- **Claude:** one short request per new company. The profile is sent as a cached system prompt.
+- **Claude:** one short request per new company. Our test run qualified 60 companies for $0.31 with the default
+  `claude-opus-5-5` (about $0.005 per company).
 
 The Apify free plan includes $5 of monthly usage.
 
