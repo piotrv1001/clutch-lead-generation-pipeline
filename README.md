@@ -139,3 +139,5 @@ icp.md             your ideal customer profile (an example is included)
   job hunting
 - [AliExpress price tracker](https://github.com/piotrv1001/aliexpress-price-tracker) — the same pattern for price
   monitoring
+- [Mercado Libre price tracker](https://github.com/piotrv1001/mercado-libre-price-tracker) and [brand mention monitor](https://github.com/piotrv1001/brand-mention-monitor) — the same pattern for marketplace
+  prices and social listening
