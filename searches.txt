@@ -1,0 +1,3 @@
+# One Clutch directory URL per line: pick a category and a city on clutch.co and paste the URL.
+https://clutch.co/developers/chicago
+https://clutch.co/web-developers/austin

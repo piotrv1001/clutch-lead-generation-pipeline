@@ -1,0 +1,17 @@
+{
+  "name": "clutch-lead-generation-pipeline",
+  "version": "1.0.0",
+  "description": "B2B lead generation pipeline: scrape agencies from Clutch with Apify, qualify them against your ideal customer profile with Claude, find decision makers on LinkedIn and export a CRM-ready CSV.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "ingest": "node --env-file-if-exists=.env src/ingest.js"
+  },
+  "dependencies": {
+    "apify-client": "^2.25.0",
+    "pg": "^8.23.1"
+  }
+}
