@@ -8,10 +8,16 @@
     "node": ">=22"
   },
   "scripts": {
-    "ingest": "node --env-file-if-exists=.env src/ingest.js"
+    "ingest": "node --env-file-if-exists=.env src/ingest.js",
+    "qualify": "node --env-file-if-exists=.env src/qualify.js",
+    "contacts": "node --env-file-if-exists=.env src/contacts.js",
+    "report": "node --env-file-if-exists=.env src/report.js",
+    "start": "npm run ingest && npm run qualify && npm run contacts && npm run report"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
     "apify-client": "^2.25.0",
-    "pg": "^8.23.1"
+    "pg": "^8.23.1",
+    "zod": "^4.6.5"
   }
 }
